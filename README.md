@@ -1,9 +1,7 @@
-# Serenity BDD project using Cucumber and Screenplay 
-16/08/2022
+# Karate project using Cucumber
+01/03/2025
 
-Serenity BDD is a library that makes it easier to write high quality automated acceptance tests, with powerful reporting and living documentation features. It has strong support for both web testing with Selenium, and API testing using RestAssured.
-
-Serenity strongly encourages good test automation design, and supports several design patterns, including classic Page Objects, the newer Lean Page Objects/ Action Classes approach, and the more sophisticated and flexible Screenplay pattern.
+Karate Framework es una herramienta potente y fácil de usar para realizar pruebas automáticas sobre servicios web, especialmente APIs RESTful y SOAP. Ofrece una sintaxis clara y natural, ideal para equipos de desarrollo y pruebas, sin la necesidad de depender de extensos conocimientos de programación. Además, su integración con herramientas como Jenkins y su capacidad para generar datos dinámicos la hacen una opción popular para pruebas de integración y de rendimiento.
 
 ### Prerequisites
 * Java 17 installed
@@ -14,11 +12,8 @@ Serenity strongly encourages good test automation design, and supports several d
 
 ### Basic Commands
 
-To run a specific Tag
-`gradle clean test -Dcucumber.filter.tags=@smoketest`
-
 To run a specific Runner
-`gradle clean test --tests=Login`
+`gradle clean test --tests=ManagerTest`
 
 <img src="https://blog.caplin.com/wp-content/uploads/2016/12/screenPlayWorkFlow-1024x511.png" alt="Screenplay Pattern" />
 
