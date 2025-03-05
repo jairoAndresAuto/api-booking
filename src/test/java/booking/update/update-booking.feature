@@ -5,6 +5,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
 
   Background:
     * def config = karate.call('classpath:karate.conf.js')
+    * def tokenB = "Basic YWRtaW46cGFzc3dvcmQxMjM="
     * def Data = Java.type('booking.utilidad.Data')
     * def random = new Data()
     * def randomFirstName = random.generateRandomFirstName()
@@ -15,9 +16,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
     * call read("../create/post-booking.feature@Create")
     Given url config.urlBase
     And path idBooking
-    And header Content-Type = "application/json"
-    And header Accept = "application/json"
-    And header Authorization  = "Basic YWRtaW46cGFzc3dvcmQxMjM="
+    And headers {'Authorization':'#(tokenB)','Content-Type':'application/json','Accept':'application/json'}
     And request {"firstname":"#(randomFirstName)","lastname":"#(randomLastName)","totalprice":#(randomInteger),"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
     When method put
     Then status 200
@@ -26,9 +25,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
   Scenario: Delete booking no existente
     Given url config.urlBase
     And path '99999'
-    And header Content-Type = "application/json"
-    And header Accept = "application/json"
-    And header Authorization  = "Basic YWRtaW46cGFzc3dvcmQxMjM="
+    And headers {'Authorization':'#(tokenB)','Content-Type':'application/json','Accept':'application/json'}
     And request {"firstname":"#(randomFirstName)","lastname":"#(randomLastName)","totalprice":#(randomInteger),"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
     When method put
     Then status 405

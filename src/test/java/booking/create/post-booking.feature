@@ -10,12 +10,10 @@ Feature: Dado que se encuentra la funcionalidad de crear booking
     * def randomLastName = random.generateRandomLastName()
     * def randomInteger = random.generateRandomInt()
 
-
   @Create
   Scenario: create bookings
     Given url config.urlBase
-    And header Content-Type = "application/json"
-    And header Accept = "application/json"
+    And headers {'Content-Type':'application/json','Accept':'application/json'}
     And request {"firstname":"#(randomFirstName)","lastname":"#(randomLastName)","totalprice":#(randomInteger),"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
     When method post
     Then status 200
