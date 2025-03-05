@@ -16,7 +16,7 @@ public class ManagerTest {
 
     @Test
     void testParalell(){
-        Results results = Runner.path("classpath:booking").outputCucumberJson(true).parallel(4);
+        Results results = Runner.path("classpath:booking").outputCucumberJson(true).parallel(Runtime.getRuntime().availableProcessors());
         generarReporte(results.getReportDir());
     }
 
