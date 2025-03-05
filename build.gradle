@@ -13,6 +13,7 @@ dependencies {
     testImplementation 'net.masterthought:cucumber-reporting:5.7.0'
     testImplementation 'ch.qos.logback:logback-classic:1.2.3'
     testImplementation 'ch.qos.logback:logback-core:1.2.3'
+    testImplementation 'com.github.javafaker:javafaker:1.0.2'
 }
 
 test{

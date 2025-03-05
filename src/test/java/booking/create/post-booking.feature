@@ -4,13 +4,19 @@ Feature: Dado que se encuentra la funcionalidad de crear booking
 
   Background:
     * def config = karate.call('classpath:karate.conf.js')
+    * def Data = Java.type('booking.utilidad.Data')
+    * def random = new Data()
+    * def randomFirstName = random.generateRandomFirstName()
+    * def randomLastName = random.generateRandomLastName()
+    * def randomInteger = random.generateRandomInt()
+
 
   @Create
   Scenario: create bookings
     Given url config.urlBase
     And header Content-Type = "application/json"
     And header Accept = "application/json"
-    And request {"firstname":"Jim","lastname":"Brown","totalprice":111,"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+    And request {"firstname":"#(randomFirstName)","lastname":"#(randomLastName)","totalprice":#(randomInteger),"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
     When method post
     Then status 200
     And def idBooking = $.bookingid

@@ -5,6 +5,8 @@ Feature: Dado que se encuentra la funcionalidad de eliminar booking
 
   Background:
     * def config = karate.call('classpath:karate.conf.js')
+    * def tokenB = "Basic YWRtaW46cGFzc3dvcmQxMjM="
+    * def tokenM = "Basic YWRtaW4eetttc3dvcmQxMjM="
 
   Scenario: Delete booking
     * call read("../create/post-booking.feature@Create")
@@ -12,7 +14,7 @@ Feature: Dado que se encuentra la funcionalidad de eliminar booking
     And  path idBooking
     And header Content-Type = "application/json"
     And header Accept = "application/json"
-    And header Authorization  = "Basic YWRtaW46cGFzc3dvcmQxMjM="
+    And header Authorization  = tokenB
     When method delete
     Then status 201
     * print response
@@ -22,7 +24,18 @@ Feature: Dado que se encuentra la funcionalidad de eliminar booking
     And path '99999'
     And header Content-Type = "application/json"
     And header Accept = "application/json"
-    And header Authorization  = "Basic YWRtaW46cGFzc3dvcmQxMjM="
+    And header Authorization  = tokenB
     When method delete
     Then status 405
+    * print response
+
+  Scenario: Delete booking token invalido
+    * call read("../create/post-booking.feature@Create")
+    Given url config.urlBase
+    And  path idBooking
+    And header Content-Type = "application/json"
+    And header Accept = "application/json"
+    And header Authorization  = tokenM
+    When method delete
+    Then status 403
     * print response

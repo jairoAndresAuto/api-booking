@@ -5,6 +5,11 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
 
   Background:
     * def config = karate.call('classpath:karate.conf.js')
+    * def Data = Java.type('booking.utilidad.Data')
+    * def random = new Data()
+    * def randomFirstName = random.generateRandomFirstName()
+    * def randomLastName = random.generateRandomLastName()
+    * def randomInteger = random.generateRandomInt()
 
   Scenario: Delete booking successfull
     * call read("../create/post-booking.feature@Create")
@@ -13,7 +18,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
     And header Content-Type = "application/json"
     And header Accept = "application/json"
     And header Authorization  = "Basic YWRtaW46cGFzc3dvcmQxMjM="
-    And request {"firstname":"Jairo","lastname":"Garcia","totalprice":333,"depositpaid":false,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+    And request {"firstname":"#(randomFirstName)","lastname":"#(randomLastName)","totalprice":#(randomInteger),"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
     When method put
     Then status 200
     * print response
@@ -24,7 +29,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
     And header Content-Type = "application/json"
     And header Accept = "application/json"
     And header Authorization  = "Basic YWRtaW46cGFzc3dvcmQxMjM="
-    And request {"firstname":"Jairo","lastname":"Garcia","totalprice":333,"depositpaid":false,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
+    And request {"firstname":"#(randomFirstName)","lastname":"#(randomLastName)","totalprice":#(randomInteger),"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
     When method put
     Then status 405
     * print response
