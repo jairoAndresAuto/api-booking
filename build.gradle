@@ -16,12 +16,8 @@ dependencies {
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
 }
 
-test {
+test{
     useJUnitPlatform()
-    reports {
-        html.enabled = true
-        junitXml.enabled = true
-    }
 }
 
 task generateCucumberReport(type: Exec) {

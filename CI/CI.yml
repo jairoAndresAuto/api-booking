@@ -27,3 +27,9 @@ jobs:
 
       - name: Build and Test with Gradle
         run: ./gradlew clean test
+
+      - name: Upload Karate Test Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: karate-reports
+          path: build/reports/tests/test/index.html
