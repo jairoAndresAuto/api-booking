@@ -20,7 +20,14 @@ jobs:
       # Paso 2: Configurar Gradle
       - name: Set up Gradle
         uses: gradle/wrapper-validation-action@v1
+        
+      # Paso 3: Otorgar permisos de ejecución a gradlew
+      - name: Grant execute permission to gradlew
+        run: chmod +x ./gradlew
 
-      # Paso 3: Ejecutar el build y las pruebas
+      # Paso 4: Ejecutar el build y las pruebas
       - name: Build and Test with Gradle
         run: ./gradlew clean test
+
+       
+
