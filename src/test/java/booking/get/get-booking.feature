@@ -4,7 +4,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
   Entonces validamos que se consulte el booking de forma correcta
 
   Background:
-    * def config = karate.call('classpath:karate.conf.js')
+    * def config = karate.call('classpath:karate-conf.js')
 
   Scenario: Get booking sucessfull
     * call read("../create/post-booking.feature@Create")

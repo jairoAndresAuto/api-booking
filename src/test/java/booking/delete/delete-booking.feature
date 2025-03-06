@@ -4,7 +4,7 @@ Feature: Dado que se encuentra la funcionalidad de eliminar booking
   Entonces validamos que se elimine el booking de forma correcta
 
   Background:
-    * def config = karate.call('classpath:karate.conf.js')
+    * def config = karate.call('classpath:karate-conf.js')
     * def tokenB = "Basic YWRtaW46cGFzc3dvcmQxMjM="
     * def tokenM = "Basic YWRtaW4eetttc3dvcmQxMjM="
 

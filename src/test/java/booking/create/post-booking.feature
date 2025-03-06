@@ -3,7 +3,7 @@ Feature: Dado que se encuentra la funcionalidad de crear booking
   Entonces validamos que se creen un booking de forma correcta
 
   Background:
-    * def config = karate.call('classpath:karate.conf.js')
+    * def config = karate.call('classpath:karate-conf.js')
     * def Data = Java.type('booking.utilidad.Data')
     * def random = new Data()
     * def randomFirstName = random.generateRandomFirstName()

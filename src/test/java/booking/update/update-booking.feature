@@ -4,7 +4,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
   Entonces validamos que se actualiza el booking de forma correcta
 
   Background:
-    * def config = karate.call('classpath:karate.conf.js')
+    * def config = karate.call('classpath:karate-conf.js')
     * def tokenB = "Basic YWRtaW46cGFzc3dvcmQxMjM="
     * def Data = Java.type('booking.utilidad.Data')
     * def random = new Data()
