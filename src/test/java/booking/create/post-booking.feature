@@ -9,6 +9,7 @@ Feature: Dado que se encuentra la funcionalidad de crear booking
     * def randomFirstName = random.generateRandomFirstName()
     * def randomLastName = random.generateRandomLastName()
     * def randomInteger = random.generateRandomInt()
+    * def datos = read('classpath:booking/estructura/estructura.json')
 
   @Create
   Scenario: create bookings
@@ -18,4 +19,5 @@ Feature: Dado que se encuentra la funcionalidad de crear booking
     When method post
     Then status 200
     And def idBooking = $.bookingid
+    And match $ == datos
     * print response

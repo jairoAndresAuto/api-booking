@@ -20,6 +20,11 @@ test{
     useJUnitPlatform()
 }
 
+task generateCucumberReport(type: Exec) {
+    dependsOn test
+    commandLine 'bash', '-c', 'mvn cucumber-report:generate'
+}
+
 sourceSets {
     test{
         resources {

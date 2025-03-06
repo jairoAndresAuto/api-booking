@@ -10,6 +10,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
     * def randomFirstName = random.generateRandomFirstName()
     * def randomLastName = random.generateRandomLastName()
     * def randomInteger = random.generateRandomInt()
+    * def datos = read('classpath:booking/estructura/estructura.json')
 
   Scenario: Delete booking successfull
     * call read("../create/post-booking.feature@Create")
@@ -21,6 +22,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
     And request {"firstname":"#(randomFirstName)","lastname":"#(randomLastName)","totalprice":#(randomInteger),"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
     When method put
     Then status 200
+    And match $ == datos
     * print response
 
   Scenario: Delete booking no existente
