@@ -10,7 +10,7 @@ Feature: Dado que se encuentra la funcionalidad de eliminar booking
 
   Scenario: Delete booking
     * call read("../create/post-booking.feature@Create")
-    Given url config.urlBase
+    Given url config.urlBase + "/booking"
     And  path idBooking
     And headers {'Authorization':'#(tokenB)','Content-Type':'application/json','Accept':'application/json'}
     When method delete
@@ -18,7 +18,7 @@ Feature: Dado que se encuentra la funcionalidad de eliminar booking
     * print response
 
   Scenario: Delete booking not found
-    Given url config.urlBase
+    Given url config.urlBase + "/booking"
     And path '99999'
     And headers {'Authorization':'#(tokenB)','Content-Type':'application/json','Accept':'application/json'}
     When method delete
@@ -27,7 +27,7 @@ Feature: Dado que se encuentra la funcionalidad de eliminar booking
 
   Scenario: Delete booking token invalido
     * call read("../create/post-booking.feature@Create")
-    Given url config.urlBase
+    Given url config.urlBase + "/booking"
     And  path idBooking
     And headers {'Authorization':'#(tokenM)','Content-Type':'application/json','Accept':'application/json'}
     When method delete

@@ -8,7 +8,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
 
   Scenario: Get booking sucessfull
     * call read("../create/post-booking.feature@Create")
-    Given url config.urlBase
+    Given url config.urlBase + "/booking"
     And path idBooking
     And header Accept = "application/json"
     When method get
@@ -16,7 +16,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
     * print response
 
   Scenario: Get booking not found
-    Given url config.urlBase
+    Given url config.urlBase + "/booking"
     And path '99999'
     And header Accept = "application/json"
     When method get

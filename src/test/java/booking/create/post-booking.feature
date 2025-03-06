@@ -12,7 +12,7 @@ Feature: Dado que se encuentra la funcionalidad de crear booking
 
   @Create
   Scenario: create bookings
-    Given url config.urlBase
+    Given url config.urlBase + "/booking"
     And headers {'Content-Type':'application/json','Accept':'application/json'}
     And request {"firstname":"#(randomFirstName)","lastname":"#(randomLastName)","totalprice":#(randomInteger),"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
     When method post

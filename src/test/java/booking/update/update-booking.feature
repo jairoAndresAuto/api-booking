@@ -14,7 +14,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
 
   Scenario: Delete booking successfull
     * call read("../create/post-booking.feature@Create")
-    Given url config.urlBase
+    Given url config.urlBase + "/booking"
     And path idBooking
     And headers {'Authorization':'#(tokenB)','Content-Type':'application/json','Accept':'application/json'}
     And request {"firstname":"#(randomFirstName)","lastname":"#(randomLastName)","totalprice":#(randomInteger),"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
@@ -23,7 +23,7 @@ Feature: Dado que se encuentra la funcionalidad de obtener booking
     * print response
 
   Scenario: Delete booking no existente
-    Given url config.urlBase
+    Given url config.urlBase + "/booking"
     And path '99999'
     And headers {'Authorization':'#(tokenB)','Content-Type':'application/json','Accept':'application/json'}
     And request {"firstname":"#(randomFirstName)","lastname":"#(randomLastName)","totalprice":#(randomInteger),"depositpaid":true,"bookingdates":{"checkin":"2018-01-01","checkout":"2019-01-01"},"additionalneeds":"Breakfast"}
