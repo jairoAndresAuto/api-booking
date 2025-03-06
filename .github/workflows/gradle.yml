@@ -22,7 +22,6 @@ jobs:
         uses: actions/setup-java@v2
         with:
           java-version: '17'
-          distribution: 'adoptopenjdk'
 
       # Paso 3: Configurar Gradle
       - name: Set up Gradle
